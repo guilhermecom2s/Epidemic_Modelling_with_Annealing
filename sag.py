@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 """Definição dos parâmetros da simulação"""
 tmax = 100 #numero maximo de iterações
 rest = 10 #restart
@@ -76,15 +77,18 @@ Ta = Ta0
 for w in range(nd):
     x_old[w] = xmin + (xmax - xmin)*random.random()
 x_old = x_old/np.sum(x_old)
-x_aux = x_old
-x_new = x_old
+
+#Se eu colocar apenas x_aux = x_old eles vão apontar pro mesmo endereço
+#e a mudança em um também acontecerá no outro
+x_aux = np.array(x_old)
+x_new = np.array(x_old)
 
 f_old = func(x_old)
 
 '''Salvando os valores encontrados'''
 Ta_res += [Ta]
 Tv_res += [Tv]
-x_res.append([x_old[0], x_old[1], x_old[2]])
+x_res.append(x_old)
 f_res += [f_old]
 
 """Inicio do loop do simulated anneling"""
@@ -117,6 +121,8 @@ for t in range(tmax):
 
                     if paceite > pa:
                         x_aux[w] = x_new[w] 
+                
+                x_aux = x_aux/np.sum(x_aux) #TODO: verificar se posso fazer isso
             
             '''Atualização do vetor solução e da função objetivo'''
             for i in range(nd):
@@ -132,7 +138,7 @@ for t in range(tmax):
     '''Salvando os valores encontrados'''
     Ta_res += [Ta]
     Tv_res += [Tv]
-    x_res.append([x_old[0], x_old[1], x_old[2]]) #Talves seja necessário usar o append
+    x_res.append(x_old) #Talves seja necessário usar o append
     f_res += [f_old]
 
 """Armazenamento dos valores"""
@@ -153,18 +159,17 @@ iterations = np.arange(1, len(f) + 1)
 rho_data = np.array(x_res)
 t_iter = np.arange(1, tmax + 2)
 
-
 '''Criação da figura com 2 sublots'''
 fig, (ax1, ax2) = plt.subplots(1, 2, sharey=False)
 fig.suptitle('Resultados do Annealing')
 
 '''Gráfico da função objetivo'''
-ax1.plot(iterations, f, 'k')
+ax1.plot(iterations, f, 'r')
 ax1.set_xlim([0, len(f)])
 ax1.set_ylim([min(f), max(f)])
-ax1.set_xlabel('iteration', fontsize=12)
-ax1.set_ylabel('I_{total}', fontsize=12)
-ax1.legend(loc="upper right")
+ax1.set_xlabel('Iteração', fontsize=12)
+ax1.set_ylabel('Número de Infectados', fontsize=12)
+#ax1.legend(loc="upper right")
 
 '''Gráfico dos valores de rho'''
 for i in range(3):
@@ -173,7 +178,7 @@ for i in range(3):
 ax2.set_xlim([0, 1])
 ax2.set_ylim([0, tmax])
 ax2.set_xlabel(r'$\rho$', fontsize=12)
-ax2.set_ylabel('iteration', fontsize=12)
+ax2.set_ylabel('Iteração', fontsize=12)
 ax2.invert_yaxis()
 ax2.legend(loc="upper right")
 
