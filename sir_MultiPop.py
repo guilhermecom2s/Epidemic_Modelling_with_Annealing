@@ -98,15 +98,21 @@ def func(rho):
     POPULACOES = [] #criando um vetor para armazenar as populações
 
     '''Criando as populações'''
-    pop1 = population(10**5, 0, [0.5, 0.1, 0.1], 0.2, rho[0])
+    pop1 = population(10**5, 0, [0.5, 0.1, 0.1, 0.1, 0.1], 0.2, rho[0])
 
-    pop2 = population(10**5, 0, [0.1, 0.5, 0.1], 0.2, rho[1])
+    pop2 = population(10**5, 0, [0.1, 0.5, 0.1, 0.1, 0.1], 0.2, rho[1])
 
-    pop3 = population(10**5, 0, [0.1, 0.1, 0.5], 0.2, rho[2])
+    pop3 = population(10**5, 0, [0.1, 0.1, 0.5, 0.1, 0.1], 0.2, rho[2])
+
+    pop4 = population(10**5, 0, [0.1, 0.1, 0.1, 0.5, 0.1], 0.2, rho[3])
+
+    pop5 = population(10**5, 0, [0.1, 0.1, 0.1, 0.1, 0.5], 0.2, rho[4])
 
     POPULACOES.append(pop1) #inserindo as populações criadas no vetor populações
     POPULACOES.append(pop2) #TODO: Achar uma maneira melhor de adicionar à POPULACOES
     POPULACOES.append(pop3)
+    POPULACOES.append(pop4)
+    POPULACOES.append(pop5)
 
     tempo = intervalo_tempo(0, 100)
 
@@ -133,6 +139,17 @@ def func(rho):
     R3 = solucoes[:,10] #pegando o valor do terceiro elemento da lista do sistema de equações'
     Icum3 = solucoes[:,11]
 
-    IcumTotal = Icum1 + Icum2 + Icum3
+    S4 = solucoes[:,12] #pegando o valor do primeiro elemento da lista do sistema de equações
+    I4 = solucoes[:,13] #pegando o valor do segundo elemento da lista do sistema de equações
+    R4 = solucoes[:,14] #pegando o valor do terceiro elemento da lista do sistema de equações'
+    Icum4 = solucoes[:,15]
 
-    return IcumTotal[-1] #retornando a ultima linha que tem o total acumulado
+    S5 = solucoes[:,16] #pegando o valor do primeiro elemento da lista do sistema de equações
+    I5= solucoes[:,17] #pegando o valor do segundo elemento da lista do sistema de equações
+    R5 = solucoes[:,18] #pegando o valor do terceiro elemento da lista do sistema de equações'
+    Icum5 = solucoes[:,19]
+
+    IcumTotal = Icum1 + Icum2 + Icum3 + Icum4 + Icum5
+
+    #retornando a ultima linha que tem o total acumulado
+    return [IcumTotal[-1], [Icum1[-1], Icum2[-1], Icum3[-1], Icum4[-1], Icum5[-1]]] 
