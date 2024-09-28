@@ -64,6 +64,7 @@ $$
 
 
 ## Results
+![plot](images/Resultadocenario3.pdf)
 
 
 ## Future Goals
