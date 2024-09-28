@@ -2,8 +2,14 @@
 
 This scientific initiation project, conducted at IFSP - Sertãozinho, focused on two key objectives: first, to determine the optimal distribution of vaccines across multiple populations; and second, to estimate the parameters of an epidemic model based on time series data of infected individuals.
 
+## Previous works
+This project is a continuation of previous projects done by the same advisor. You can read them at:
+- [Modified SIR Compartmental Epidemic Model with Social Distancing and Hospital Saturation Applied to the COVID-19 Pandemic](http://nd.ics.org.ru/nd210303/)
+- [Modelo epidêmico SIR com vacinação para duas populações: estudo numérico](https://ocs.ifsp.edu.br/conict/xiiiconict/paper/viewPaper/8489)
+- [Distribuição igualitária de vacinas entre populações como melhor estratégia para combater uma pandemia: simulações computacionais a partir do modelo susceptível-infecioso-recuperado](https://ocs.ifsp.edu.br/conict/xivconict/paper/view/9877)
 
-
+## Articles
+This project is yet to bu published...
 
 ## Mathematical Background
 
@@ -60,14 +66,23 @@ $$
 f({\bf x}) = \dfrac{1}{n}\sum_{i=1}^{n}\left[I_{\text{real}}^{(i)} - I_{\text{num}}^{(i)}\right]^2
 $$
 
-## Solution Implementation
-
-
 ## Results
-![plot](images/Resultadocenario3.pdf)
+
+### Vaccine Distribution
+We successfully determined the optimal vaccine distribution for five populations. While we also tested with more than ten populations, the resulting plot became cluttered with information. For the test, we assumed all populations had identical parameters, which clearly showed that the optimal strategy was to distribute vaccines equally across populations, as expected given their homogeneity.
+
+![plot](images/ResVaccines.png)
+
+### Parameter Estimation
+Estimating all parameters simultaneously is extremely challenging, if not impossible. Therefore, we focused on finding only the transmission rate $\beta$. First, we generated the observed infected data $I_{real}$​ by running the model with $\beta = 0.5$, and then used our code to estimate the parameter. As shown in the image below, the model successfully identified the value of $\beta$ that accurately describes the population.
+
+![plot](images/ResParameters.png)
 
 
 ## Future Goals
+- Organize the project folders'
+- Turn the Simulated Annealing method coded into a library
+- Create a better way to declare populations in the vaccines optimization solution
 
 
 ## Authors
