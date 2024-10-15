@@ -1,4 +1,4 @@
-# Optimizing Vaccine Distribution and Epidemic Parameter Estimationg
+# Optimizing Vaccine Distribution and Epidemic Parameter Estimating
 
 This scientific initiation project, conducted at IFSP - Sertãozinho, focused on two key objectives: first, to determine the optimal distribution of vaccines across multiple populations; and second, to estimate the parameters of an epidemic model based on time series data of infected individuals.
 
@@ -9,7 +9,7 @@ This project is a continuation of previous projects done by the same advisor. Yo
 - [Distribuição igualitária de vacinas entre populações como melhor estratégia para combater uma pandemia: simulações computacionais a partir do modelo susceptível-infecioso-recuperado](https://ocs.ifsp.edu.br/conict/xivconict/paper/view/9877)
 
 ## Articles
-This project is yet to bu published...
+This project is yet to be published...
 
 ## Mathematical Background
 
